@@ -28,6 +28,9 @@
       gap: var(--homey-su-2);
       flex-shrink: 0;
     }
+    body.no-header .cal-header {
+      display: none;
+    }
     .cal-date {
       display: flex;
       align-items: center;
@@ -63,14 +66,22 @@
     }
 
     .cal-list {
-      display: inline-block;
+      flex:1;
       min-height: 0;
       overflow: hidden;
-      overflow-y: auto;
       margin-top: var(--homey-su-4);
       margin-bottom: calc(var(--homey-su-4) + var(--homey-su-2));
     }
-
+    body.no-header .cal-list {
+      margin-top: var(--homey-su-2);
+    }
+    body.no-footer .cal-list {
+      margin-bottom: var(--homey-su-2);
+    }
+    body.scrollable .cal-list {
+      display: inline-block;
+      overflow-y: auto;
+    }
     .cal-day-header {
       display: flex;
       align-items: baseline;
@@ -219,6 +230,9 @@
       margin-top: var(--homey-su-2);
       flex-shrink: 0;
     }
+    body.no-footer .cal-footer {
+      display: none;
+    }
     .cal-refresh {
       width: 28px;
       height: 28px;
@@ -250,7 +264,7 @@
     }
   </style>
 </head>
-<body class="homey-widget">
+<body id="body" class="homey-widget">
   <div id="cal-header" class="cal-header">
     <div class="cal-date">
       <span class="cal-date-num" id="dateNum"></span>
@@ -516,12 +530,6 @@
                      '&showLocation=' + encodeURIComponent(showLocation) +
                      '&calendarToShow=' + encodeURIComponent(calendarToShow);
 
-        const displayHeader = settings.showHeader ? 'flex' : 'none';
-        const displayFooter = settings.showFooter ? 'flex' : 'none';
-
-        document.getElementById("cal-header").style.display = displayHeader;
-        document.getElementById("cal-footer").style.display = displayFooter;
-
         const events = await Homey.api('GET', path, {});
         renderEvents(events);
       } catch (err) {
@@ -540,6 +548,20 @@
       useFixedHeight = settings.useFixedHeight === true;
       calendarToShow = settings.calendarToShow ? (settings.calendarToShow.id === '' ? settings.calendarToShow.id : settings.calendarToShow.name) : '';      
 
+      const bodyElement = document.getElementById('body');
+
+      if (settings.showHeader === false) {
+        bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' no-header');
+      }
+
+      if (settings.showFooter === false) {
+        bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' no-footer');
+      }
+      
+      if (settings.scrollable === true) {
+        bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' scrollable');
+      }
+
       // Initialize formatters with the fallback locale and register the update
       // listener BEFORE any async work. Otherwise an app broadcast that lands
       // during the language fetch would be missed, and the widget would stay
@@ -557,9 +579,7 @@
         Homey.hapticFeedback();
         refreshBtn.classList.add('loading');
         renderHeader();
-        load().finally(() => {
-          refreshBtn.classList.remove('loading');
-        });
+        load().finally(() => refreshBtn.classList.remove('loading'));
       });
 
       Homey.ready();
