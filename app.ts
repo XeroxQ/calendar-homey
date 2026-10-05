@@ -75,8 +75,15 @@ export class IcalCalendar extends Homey.App {
     widget.registerSettingAutocompleteListener(
       "calendarToShow",
       async (query: string, _settings): Promise<Widget.SettingAutocompleteResults> => {
-        const results = [{ id: "__all__", name: this.homey.__("calendar.all") }] as any;
-        results.push(...this.getCalendars().filter(item => item.name.toLowerCase().includes(query.toLowerCase())));
+        const results = [{ id: "", name: this.homey.__("calendar.all") }] as Widget.SettingAutocompleteResults;
+        const calendarsFiltered = this.getCalendars().filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+        
+        if (calendarsFiltered.length > 0) {
+          for (let IcalCalendar = 0; IcalCalendar < calendarsFiltered.length; IcalCalendar++) {
+            const calendar = calendarsFiltered[IcalCalendar];
+            results.push({ name: calendar.name });
+          }
+        }        
         return results;
       }
     );

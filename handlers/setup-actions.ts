@@ -33,10 +33,9 @@ export const setupActions = (app: IcalCalendar, variableMgmt: VariableManagement
     if (getEventsFinished.length > 0) {
       throw new Error(getEventsFinished.join("\n\n"));
     }
-    if (getEventsFinished.length === 0) {
-      app.broadcastCalendarUpdate();
-    }
-
+    
+    app.broadcastCalendarUpdate();
+    
     return true;
   });
 

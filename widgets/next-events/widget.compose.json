@@ -13,7 +13,24 @@
     "ko": "다가오는 이벤트"
   },
   "height": 400,
-  "settings": [
+  "settings": [    
+    {
+      "id": "calendarToShow",
+      "type": "autocomplete",
+      "title": {
+        "en": "Calendar to show",
+        "no": "Kalender å vise",
+        "nl": "Kalender om te tonen",
+        "de": "Anzuzeigender Kalender",
+        "sv": "Kalender att visa",
+        "fr": "Calendrier à afficher",
+        "it": "Calendario da mostrare",
+        "es": "Calendario para mostrar",
+        "da": "Kalender at vise",
+        "pl": "Kalendarz do wyświetlenia",
+        "ko": "표시할 캘린더"
+      }
+    },
     {
       "id": "daysAhead",
       "type": "number",
@@ -182,23 +199,6 @@
         "ko": "최대 높이에서 정의된 고정 높이를 사용하세요."
       },
       "value": false
-    },
-    {
-      "id": "calendarToShow",
-      "type": "autocomplete",
-      "title": {
-        "en": "Calendar to show",
-        "no": "Kalender å vise",
-        "nl": "Kalender om te tonen",
-        "de": "Anzuzeigender Kalender",
-        "sv": "Kalender att visa",
-        "fr": "Calendrier à afficher",
-        "it": "Calendario da mostrare",
-        "es": "Calendario para mostrar",
-        "da": "Kalender at vise",
-        "pl": "Kalendarz do wyświetlenia",
-        "ko": "표시할 캘린더"
-      }
     }
   ],
   "api": {
