@@ -82,6 +82,7 @@
       display: inline-block;
       overflow-y: auto;
     }
+
     .cal-day-header {
       display: flex;
       align-items: baseline;
@@ -264,7 +265,7 @@
     }
   </style>
 </head>
-<body id="body" class="homey-widget">
+<body id="cal-body" class="homey-widget">
   <div id="cal-header" class="cal-header">
     <div class="cal-date">
       <span class="cal-date-num" id="dateNum"></span>
@@ -548,7 +549,7 @@
       useFixedHeight = settings.useFixedHeight === true;
       calendarToShow = settings.calendarToShow ? (settings.calendarToShow.id === '' ? settings.calendarToShow.id : settings.calendarToShow.name) : '';      
 
-      const bodyElement = document.getElementById('body');
+      const bodyElement = document.getElementById('cal-body');
 
       if (settings.showHeader === false) {
         bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' no-header');
