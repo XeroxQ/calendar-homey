@@ -371,7 +371,7 @@ export class IcalCalendar extends Homey.App {
 
   broadcastCalendarUpdate(): void {
     try {
-      this.homey.api.realtime(`update_widget_${WIDGET_ID}`, null);
+      this.homey.api.realtime('update', null);
     } catch (error) {
       // widget may not be registered yet on first boot
       this.error(`[WARN] broadcastCalendarUpdate: failed to emit 'update' for '${WIDGET_ID}' ->`, error);

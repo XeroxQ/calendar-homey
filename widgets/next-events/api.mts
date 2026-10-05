@@ -38,7 +38,7 @@ export default {
     if (calendars.length === 0) {
       return [];
     }
-    if(calendarToShow && calendarToShow!=='') {
+    if (calendarToShow && calendarToShow!=='') {
       calendars = calendars.filter(x=>x.name===calendarToShow);
     }
 

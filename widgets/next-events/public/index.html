@@ -66,7 +66,7 @@
       display: inline-block;
       min-height: 0;
       overflow: hidden;
-      overflow-y:auto;
+      overflow-y: auto;
       margin-top: var(--homey-su-4);
       margin-bottom: calc(var(--homey-su-4) + var(--homey-su-2));
     }
@@ -212,7 +212,7 @@
 
     .cal-footer {
       position: fixed;
-      bottom:var(--homey-su-2);
+      bottom: var(--homey-su-2);
       right: var(--homey-su-2);
       display: flex;
       justify-content: flex-end;
@@ -481,7 +481,7 @@
     }
 
     function resizeToContent() {
-      if(useFixedHeight) {
+      if (useFixedHeight) {
         Homey.setHeight(currentMaxHeight());
         return;
       }
@@ -538,15 +538,14 @@
       showCalendarName = settings.showCalendarName !== false;
       showLocation = settings.showLocation === true;
       useFixedHeight = settings.useFixedHeight === true;
-      calendarToShow = settings.calendarToShow ? (settings.calendarToShow.id === '' ? settings.calendarToShow.id : settings.calendarToShow.name) : '';
-      
+      calendarToShow = settings.calendarToShow ? (settings.calendarToShow.id === '' ? settings.calendarToShow.id : settings.calendarToShow.name) : '';      
 
       // Initialize formatters with the fallback locale and register the update
       // listener BEFORE any async work. Otherwise an app broadcast that lands
       // during the language fetch would be missed, and the widget would stay
       // stuck on its initial (possibly empty) render until the next 15-min sync.
       initFormatters();
-      Homey.on('update_widget_next-events', () => {
+      Homey.on('update', () => {
         renderHeader();
         load();
       });
