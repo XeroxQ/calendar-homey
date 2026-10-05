@@ -76,14 +76,16 @@ export class IcalCalendar extends Homey.App {
       "calendarToShow",
       async (query: string, _settings): Promise<Widget.SettingAutocompleteResults> => {
         const results = [{ id: "", name: this.homey.__("calendar.all") }] as Widget.SettingAutocompleteResults;
-        const calendarsFiltered = this.getCalendars().filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
-        
+        const calendarsFiltered = this.getCalendars().filter(item =>
+          item.name.toLowerCase().includes(query.toLowerCase())
+        );
+
         if (calendarsFiltered.length > 0) {
           for (let IcalCalendar = 0; IcalCalendar < calendarsFiltered.length; IcalCalendar++) {
             const calendar = calendarsFiltered[IcalCalendar];
             results.push({ name: calendar.name });
           }
-        }        
+        }
         return results;
       }
     );
@@ -371,7 +373,7 @@ export class IcalCalendar extends Homey.App {
 
   broadcastCalendarUpdate(): void {
     try {
-      this.homey.api.realtime('update', null);
+      this.homey.api.realtime("update", null);
     } catch (error) {
       // widget may not be registered yet on first boot
       this.error(`[WARN] broadcastCalendarUpdate: failed to emit 'update' for '${WIDGET_ID}' ->`, error);
