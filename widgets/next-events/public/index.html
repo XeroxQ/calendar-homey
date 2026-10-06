@@ -78,10 +78,6 @@
     body.no-footer .cal-list {
       margin-bottom: var(--homey-su-2);
     }
-    body.scrollable .cal-list {
-      display: inline-block;
-      overflow-y: auto;
-    }
 
     .cal-day-header {
       display: flex;
@@ -559,10 +555,6 @@
         bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' no-footer');
       }
       
-      if (settings.scrollable === true) {
-        bodyElement.setAttribute('class', bodyElement.getAttribute('class') + ' scrollable');
-      }
-
       // Initialize formatters with the fallback locale and register the update
       // listener BEFORE any async work. Otherwise an app broadcast that lands
       // during the language fetch would be missed, and the widget would stay

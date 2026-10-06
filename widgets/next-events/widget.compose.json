@@ -199,37 +199,6 @@
         "ko": "최대 높이에서 정의된 고정 높이를 사용하세요."
       },
       "value": false
-    },
-    {
-      "id": "scrollable",
-      "type": "checkbox",
-      "title": {
-        "en": "Scrollable",
-        "nl": "Scrollbaar",
-        "da": "Rulbar",
-        "de": "Scrollbar",
-        "es": "Desplazable",
-        "fr": "Défilable",
-        "it": "Scorrevole",
-        "no": "Rullbar",
-        "sv": "Rullbar",
-        "pl": "Przewijane",
-        "ko": "스크롤 가능"
-      },
-      "hint": {
-        "en": "Allows the widget to vertical scroll.",
-        "nl": "Hiermee kan de widget verticaal scrollen.",
-        "da": "Gør det muligt for widgetten at rulle vertikalt.",
-        "de": "Ermöglicht dem Widget vertikales Scrollen.",
-        "es": "Permite que el widget se desplace verticalmente.",
-        "fr": "Permet au widget de défiler verticalement.",
-        "it": "Consente al widget di scorrere verticalmente.",
-        "no": "Lar widgeten rulle vertikalt.",
-        "sv": "Tillåter widgeten att rulla vertikalt.",
-        "pl": "Pozwala na pionowe przewijanie widżetu.",
-        "ko": "위젯이 세로로 스크롤할 수 있도록 허용합니다."
-      },
-      "value": false
     }
   ],
   "api": {
